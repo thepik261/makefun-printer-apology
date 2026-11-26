@@ -4,10 +4,12 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 
 const LINE =
-  "I'm sorry I ate your report — after 400 pages of 'urgent' on cheap paper, even I needed a snack.";
+  "I'm sorry I ate your report — after 400 pages of 'urgent' on cheap paper, even I got peckish.";
 
-if (LINE.includes("\n") || LINE.length < 1 || LINE.length > 120) {
-  throw new Error(`Invalid line: must be a single line of 1-120 chars, got ${LINE.length}`);
+const LINE_LEN = [...LINE].length;
+
+if (LINE.includes("\n") || LINE_LEN < 1 || LINE_LEN > 120) {
+  throw new Error(`Invalid line: must be a single line of 1-120 chars, got ${LINE_LEN}`);
 }
 
 mkdirSync("/output", { recursive: true });
